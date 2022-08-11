@@ -240,6 +240,9 @@ class _ToMarkdown:
         Convert `text` in Google-style docstring format to Markdown
         to be further converted later.
         """
+        text = text.replace(":param", "\n__Parameters:__\n\n   *", 1)
+        text = text.replace(":param",  "\n   *")
+        text = text.replace(":return:", "\n\nReturns:")
         def googledoc_sections(match):
             section, body = match.groups('')
             if not body:
